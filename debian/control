@@ -1,0 +1,9 @@
+Source: syslog-ng-deps
+Maintainer: Syslog-ng Team <syslog-ng-dev-l@balabit.hu>
+
+Package: syslog-ng-deps
+Architecture: any
+
+Package: syslog-ng-deps-dev
+Architecture: any
+

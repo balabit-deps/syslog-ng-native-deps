@@ -1,0 +1,47 @@
+#!/bin/sh
+
+set -e
+
+ZWACONF=./.zwaconf
+
+TARGET=
+
+get_version(){
+      head -1 debian/changelog | sed -e 's/.*(\([^)]*\)).*/\1/'
+}
+
+if [ -f $ZWACONF ]; then
+  . $ZWACONF
+fi
+
+if [ -z "$TARGET" ]; then
+  TARGET=$PWD/out
+fi
+
+if [ -z "$MAKE" ];then
+  MAKE=make
+fi
+
+cmd=$1
+shift
+case "$cmd" in
+  get-version)
+    get_version
+    ;;
+  prepare-dist)
+    VERSION=`get_version`
+    ;;
+  dist-exclude-list|build-exclude-list)
+    echo "out obj *.aqt *.ncb *.suo *.vcproj.*.user"
+    ;;
+  bootstrap|configure|make)
+    echo "No need to compile in ZWA"
+    ;;
+  *)
+    echo "Unknown command: $cmd"
+    exit 1
+    ;;
+esac
+exit 0
+
+# vim: ts=2 sw=2 expandtab

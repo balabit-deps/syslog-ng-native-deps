@@ -1,0 +1,5 @@
+syslog-ng-deps (1.0) syslogngdeps51; urgency=low
+
+  * Initial release.
+
+ -- Tusa Viktor <tusa@tusa.balabit>  Mon, 28 Apr 2014 14:08:18 +0200

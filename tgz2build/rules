@@ -1,0 +1,66 @@
+#!/usr/bin/make -f
+LIB_FILES=
+
+ifneq (,$(findstring solaris-11,$(ZBS_DIST)))
+   LIB_FILES="/usr/sfw/lib/64/libgcc_s*.*"
+endif
+
+ifneq (,$(findstring solaris-10,$(ZBS_DIST)))
+ ifneq (,$(findstring amd64, $(ZBS_ARCH)))
+   LIB_FILES="/usr/sfw/lib/64/libgcc_s_amd64.so /usr/sfw/lib/64/libgcc_s.so.1 /usr/local/mysql_64/lib/libmysqlclient.so*"
+ endif
+
+ ifneq (,$(findstring sparc64, $(ZBS_ARCH)))
+    LIB_FILES="/usr/local/gcc4/lib/sparcv9/libgcc_s.so*"
+ else
+  ifneq (,$(findstring sparc, $(ZBS_ARCH)))
+     LIB_FILES="/usr/local/gcc4/lib/libgcc_s.so*"
+  endif
+ endif
+
+endif
+
+ifneq (,$(findstring linux-glibc2.3.6,$(ZBS_DIST)))
+   LIB_FILES="/usr/lib/libaio.so.1 /usr/lib/libaio.so.1.0.1 /lib/libcap.so /lib/libcap.so.1 /lib/libcap.so.1.10"
+endif
+
+ifneq (,$(findstring solaris-9,$(ZBS_DIST)))
+ ifneq (,$(findstring sparc64, $(ZBS_ARCH)))
+    LIB_FILES="/opt/gcc4/lib/sparcv9/libgcc_s.so /opt/gcc4/lib/sparcv9/libgcc_s.so.1"
+ else
+  ifneq (,$(findstring sparc, $(ZBS_ARCH)))
+     LIB_FILES="/opt/gcc4/lib/libgcc_s.so /opt/gcc4/lib/libgcc_s.so.1"
+  endif
+ endif
+
+ ifneq (,$(findstring i386, $(ZBS_ARCH)))
+   LIB_FILES="/usr/local/lib/libgcc_s.so /usr/local/lib/libgcc_s.so.1"
+ endif
+
+endif
+
+ifneq (,$(findstring aix-6.1,$(ZBS_DIST)))
+  LIB_FILES="/usr/local/lib/gcc/powerpc-ibm-aix6.1.0.0/4.2.0/libgcc_s.a"
+endif
+
+ifneq (,$(findstring aix-7.1,$(ZBS_DIST)))
+  LIB_FILES="/usr/local/lib/gcc/powerpc-ibm-aix6.1.0.0/4.2.0/libgcc_s.a"
+endif
+
+all: chrpath
+
+clean:
+	rm -Rf $(ZBS_STAGE_DIR)
+
+copy: clean
+	mkdir -p $(ZBS_STAGE_DIR)/$(ZBS_PREFIX)/lib; \
+	for i in $(LIB_FILES); do \
+		cp $$i $(ZBS_STAGE_DIR)/$(ZBS_PREFIX)/lib; \
+	done
+
+chrpath: copy
+	if [ -x /opt/chrpath/chrpath ]; then \
+	   find $(ZBS_STAGE_DIR)/$(ZBS_PREFIX)/lib -name '*.so*' | xargs -n 1 /opt/chrpath/chrpath -d; \
+	else \
+	   echo "/opt/chrpath/chrpath binary not found."; \
+    fi
