@@ -2,7 +2,9 @@
 LIB_FILES=
 
 ifneq (,$(findstring solaris-11,$(ZBS_DIST)))
+ ifneq (,$(findstring amd64, $(ZBS_ARCH)))
    LIB_FILES="/usr/sfw/lib/64/libgcc_s*.*"
+ endif
 endif
 
 ifneq (,$(findstring solaris-10,$(ZBS_DIST)))
