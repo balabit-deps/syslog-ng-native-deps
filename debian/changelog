@@ -1,4 +1,4 @@
-syslog-ng-native-deps (1.0) syslogngdeps51; urgency=low
+syslog-ng-native-deps (5.1.0) syslogngdeps51; urgency=low
 
   * Initial release.
 
