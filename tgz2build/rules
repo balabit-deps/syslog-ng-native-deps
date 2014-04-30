@@ -61,7 +61,7 @@ clean:
 copy: clean
 	mkdir -p $(ZBS_STAGE_DIR)/$(ZBS_PREFIX)/lib; \
 	for i in $(LIB_FILES); do \
-		cp $$i $(ZBS_STAGE_DIR)/$(ZBS_PREFIX)/lib; \
+		cp -P $$i $(ZBS_STAGE_DIR)/$(ZBS_PREFIX)/lib; \
 	done
 
 chrpath: copy
