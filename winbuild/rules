@@ -1,0 +1,23 @@
+#!/usr/bin/make -f
+
+LIB_FILES=
+
+ifneq (,$(findstring windows-2012,$(ZBS_DIST)))
+ ifneq (,$(findstring amd64, $(ZBS_ARCH)))
+    LIB_FILES="/usr/x86_64-w64-mingw32/sys-root/mingw/bin/libgcc_s_sjlj-1.dll /usr/x86_64-w64-mingw32/sys-root/mingw/bin/libssp-0.dll /usr/x86_64-w64-mingw32/sys-root/mingw/bin/libstdc++-6.dll /usr/x86_64-w64-mingw32/sys-root/mingw/bin/pthreadGC2-w64.dll"
+ endif
+ ifneq (,$(findstring i386, $(ZBS_ARCH)))
+    LIB_FILES="/usr/i686-w64-mingw32/sys-root/mingw/bin/libgcc_s_sjlj-1.dll /usr/i686-w64-mingw32/sys-root/mingw/bin/libssp-0.dll /usr/i686-w64-mingw32/sys-root/mingw/bin/libstdc++-6.dll /usr/i686-w64-mingw32/sys-root/mingw/bin/pthreadGC2.dll"
+ endif
+endif
+
+all: copy
+
+clean:
+	rm -Rf $(ZBS_STAGE_DIR)
+
+copy: clean
+	mkdir -p $(ZBS_STAGE_DIR)/bin; \
+	for i in $(LIB_FILES); do \
+		cp $$i $(ZBS_STAGE_DIR)/bin; \
+	done
