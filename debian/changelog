@@ -1,3 +1,9 @@
+syslog-ng-native-deps (5.1.1) syslogngdeps51; urgency=low
+
+  * Corrected some shared library path
+
+ -- Tusa Viktor <tusa@tusa.balabit>  Tue, 06 May 2014 15:03:59 +0200
+
 syslog-ng-native-deps (5.1.0) syslogngdeps51; urgency=low
 
   * Initial release.
