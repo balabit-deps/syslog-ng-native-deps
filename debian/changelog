@@ -1,3 +1,9 @@
+syslog-ng-native-deps (5.1.2) syslogngdeps51; urgency=low
+
+  * solaris 11 sparc/sparc64 support added
+
+ -- Laszlo Budai <lbudai@balabit.hu>  Thu, 15 May 2014 11:36:22 +0200
+
 syslog-ng-native-deps (5.1.1) syslogngdeps51; urgency=low
 
   * Corrected some shared library path
