@@ -5,6 +5,13 @@ ifneq (,$(findstring solaris-11,$(ZBS_DIST)))
  ifneq (,$(findstring amd64, $(ZBS_ARCH)))
    LIB_FILES="/usr/sfw/lib/64/libgcc_s*.*"
  endif
+ ifneq (,$(findstring sparc64, $(ZBS_ARCH)))
+    LIB_FILES="/usr/gcc/4.5/lib/sparcv9/libgcc_s*.*"
+ else
+  ifneq (,$(findstring sparc, $(ZBS_ARCH)))
+    LIB_FILES="/usr/gcc/4.5/lib/libgcc_s.*.*"
+  endif
+ endif
 endif
 
 ifneq (,$(findstring solaris-10,$(ZBS_DIST)))
