@@ -1,3 +1,9 @@
+syslog-ng-native-deps (5.2.0) syslogng52; urgency=low
+
+  * release for 5F2
+
+ -- jviktor <jviktor@devel-57>  Fri, 06 Jun 2014 11:05:47 +0200
+
 syslog-ng-native-deps (5.1.2) syslogngdeps51; urgency=low
 
   * solaris 11 sparc/sparc64 support added
