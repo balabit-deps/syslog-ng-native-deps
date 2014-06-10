@@ -1,3 +1,9 @@
+syslog-ng-native-deps (5.2.0.1) syslogng52; urgency=low
+
+  * solaris 11 amd64 correction
+
+ -- jviktor <jviktor@devel-57>  Tue, 10 Jun 2014 09:56:39 +0200
+
 syslog-ng-native-deps (5.2.0) syslogng52; urgency=low
 
   * release for 5F2
