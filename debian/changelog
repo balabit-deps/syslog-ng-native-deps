@@ -1,3 +1,9 @@
+syslog-ng-native-deps (5.3.0) syslogng53; urgency=low
+
+  * release for syslog-ng-5.3
+
+ -- Tusa Viktor <tusa@tusa.balabit>  Tue, 21 Oct 2014 14:28:56 +0200
+
 syslog-ng-native-deps (5.2.0.1) syslogng52; urgency=low
 
   * solaris 11 amd64 correction
