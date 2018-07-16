@@ -30,11 +30,11 @@ ifneq (,$(findstring solaris-10,$(ZBS_DIST)))
 endif
 
 ifneq (,$(findstring linux-glibc2.3.6,$(ZBS_DIST)))
-   LIB_FILES="/usr/lib/libaio.so.1 /usr/lib/libaio.so.1.0.1 /lib/libcap.so /lib/libcap.so.1 /lib/libcap.so.1.10"
+   LIB_FILES="/usr/lib/libaio.so.1 /usr/lib/libaio.so.1.0.1"
 endif
 
 ifneq (,$(findstring linux-glibc2.11,$(ZBS_DIST)))
-   LIB_FILES="/lib/libaio.so.1.0.1 /lib/libaio.so.1 /lib/libcap.so /lib/libcap.so.2 /lib/libcap.so.2.17"
+   LIB_FILES="/lib/libaio.so.1.0.1 /lib/libaio.so.1"
 endif
 
 ifneq (,$(findstring solaris-9,$(ZBS_DIST)))
