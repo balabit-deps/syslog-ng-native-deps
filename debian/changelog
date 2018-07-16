@@ -1,3 +1,9 @@
+syslog-ng-native-deps (7.0.0) syslogng70; urgency=low
+
+  * release for syslog-ng-7.0
+
+ -- Laszlo Varady <laszlo.varady@balabit.com>  Mon, 16 Jul 2018 18:23:34 +0200
+
 syslog-ng-native-deps (6.0.0) syslogng60; urgency=low
 
   * release for syslog-ng-6.0
