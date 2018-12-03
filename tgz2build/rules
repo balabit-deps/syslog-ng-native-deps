@@ -37,6 +37,10 @@ ifneq (,$(findstring linux-glibc2.11,$(ZBS_DIST)))
    LIB_FILES="/lib/libaio.so.1.0.1 /lib/libaio.so.1"
 endif
 
+ifneq (,$(findstring ubuntu-bionic,$(ZBS_DIST)))
+   LIB_FILES="/lib/libaio.so.1.0.1 /lib/libaio.so.1"
+endif
+
 ifneq (,$(findstring solaris-9,$(ZBS_DIST)))
  ifneq (,$(findstring sparc64, $(ZBS_ARCH)))
     LIB_FILES="/opt/csw/lib/sparcv9/libgcc_s.so /opt/csw/lib/sparcv9/libgcc_s.so.1"
